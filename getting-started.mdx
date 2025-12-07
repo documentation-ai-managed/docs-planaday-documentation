@@ -1,0 +1,118 @@
+---
+title: Getting Started
+description: Step-by-step guide to set up and begin using Planaday for course administration
+---
+
+## Account Setup
+
+Start your Planaday journey by creating an account and configuring your initial settings. You'll need to provide basic information about your organization and preferred settings to get started.
+
+<Steps>
+  <Step title="Sign Up" icon="user-plus">
+    Visit planaday.com and click "Start Free Trial." Enter your email address and create a secure password. You'll receive a confirmation email with a verification link.
+  </Step>
+  <Step title="Verify Email" icon="mail">
+    Click the verification link in your email to activate your account. This step ensures the security of your account and allows us to send important updates.
+  </Step>
+  <Step title="Complete Profile" icon="settings">
+    Fill in your organization details, including name, type (school, training center, etc.), and contact information. This helps us customize your experience.
+  </Step>
+  <Step title="Set Preferences" icon="sliders">
+    Configure time zone, date formats, and notification settings. Choose whether to enable two-factor authentication for enhanced security.
+  </Step>
+</Steps>
+
+## Creating Your First Course
+
+Once your account is set up, create your first course to start managing student data. This process involves defining course structure and enrollment settings.
+
+<Columns cols={2}>
+  <Card title="Course Basics" icon="book" href="#course-basics">
+    Define course title, description, and duration.
+  </Card>
+  <Card title="Enrollment Settings" icon="users" href="#enrollment-settings">
+    Configure capacity limits and registration options.
+  </Card>
+</Columns>
+
+### Course Basics
+
+Begin by entering the fundamental details of your course. The course title should be clear and descriptive to help students understand what they'll learn.
+
+<CodeGroup tabs="JavaScript,Python">
+  ````javascript
+const courseData = {
+  title: 'Introduction to Web Development',
+  description: 'Learn HTML, CSS, and JavaScript fundamentals',
+  duration: '8 weeks',
+  instructor: 'Jane Doe',
+  maxStudents: 30
+};
+````
+  ````python
+course_data = {
+  'title': 'Introduction to Web Development',
+  'description': 'Learn HTML, CSS, and JavaScript fundamentals',
+  'duration': '8 weeks',
+  'instructor': 'Jane Doe',
+  'max_students': 30
+}
+````
+</CodeGroup>
+
+### Enrollment Settings
+
+Determine how students can join your course and set any prerequisites or restrictions. This helps manage course capacity and ensures appropriate student placement.
+
+<Tabs>
+  <Tab title="Open Enrollment" icon="unlock">
+    Allow anyone to enroll without restrictions. This is ideal for public courses or introductory sessions.
+  </Tab>
+  <Tab title="Restricted Access" icon="lock">
+    Require approval or prerequisites before enrollment. Perfect for advanced courses or certification programs.
+  </Tab>
+</Tabs>
+
+## Adding Students
+
+Populate your course with student information to begin tracking progress and managing communications. You can add students individually or import data in bulk.
+
+<Steps>
+  <Step title="Individual Entry" icon="user-plus">
+    Click "Add Student" and enter details like name, email, and enrollment date. You can also upload a profile photo.
+  </Step>
+  <Step title="Bulk Import" icon="upload">
+    Use our CSV import feature for large groups. Download the template, fill in student data, and upload to quickly populate your course.
+  </Step>
+  <Step title="Verify Information" icon="check-circle">
+    Review imported data for accuracy. Make corrections as needed before finalizing the import.
+  </Step>
+</Steps>
+
+<Callout kind="info">
+  Student data is encrypted and stored securely. We comply with GDPR and FERPA regulations to protect personal information.
+</Callout>
+
+## Dashboard Overview
+
+Familiarize yourself with the main dashboard to monitor course activity and access key features. The dashboard provides real-time insights into enrollment and progress.
+
+<Expandable title="Dashboard Components" default-open="true">
+  - **Enrollment Chart**: Visual representation of student registrations over time
+  - **Progress Tracker**: Percentage of course completion by individual students
+  - **Recent Activity**: Timeline of recent enrollments, assignments, and communications
+  - **Quick Actions**: Shortcuts to add students, create assignments, or send announcements
+</Expandable>
+
+<ExpandableGroup>
+  <Expandable title="Customizing Your Dashboard">
+    Rearrange widgets and set preferences to focus on the metrics most important to you.
+  </Expandable>
+  <Expandable title="Generating Reports">
+    Export data for external analysis or compliance reporting with customizable filters.
+  </Expandable>
+</ExpandableGroup>
+
+<Callout kind="tip">
+  Enable email notifications for important events like new enrollments or course milestones to stay informed.
+</Callout>

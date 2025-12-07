@@ -1,0 +1,152 @@
+---
+title: Authentication
+description: Learn how to securely authenticate and authorize access to Planaday APIs
+---
+
+## Authentication Methods
+
+Planaday supports multiple authentication methods to ensure secure access to your course data. Choose the method that best fits your integration needs and security requirements.
+
+<Tabs>
+  <Tab title="API Keys" icon="key">
+    Generate and manage API keys for programmatic access. Each key can be scoped to specific resources and operations.
+
+    <Steps>
+      <Step title="Generate Key" icon="plus">
+        Navigate to Settings > API Keys and click "Generate New Key." Choose permissions and expiration date.
+      </Step>
+      <Step title="Configure Scopes" icon="settings">
+        Select which resources (courses, students, reports) the key can access. Use principle of least privilege.
+      </Step>
+      <Step title="Secure Storage" icon="lock">
+        Store keys securely using environment variables or secret management systems. Never expose keys in code.
+      </Step>
+    </Steps>
+  </Tab>
+  <Tab title="OAuth 2.0" icon="shield">
+    Use industry-standard OAuth 2.0 for delegated access. Ideal for third-party integrations and user-specific permissions.
+
+    <CodeGroup tabs="JavaScript,Python">
+      ````javascript
+const oauthConfig = {
+  clientId: 'your_client_id',
+  clientSecret: 'your_client_secret',
+  redirectUri: 'https://yourapp.com/callback',
+  scope: 'read:courses write:students'
+};
+````
+      ````python
+oauth_config = {
+  'client_id': 'your_client_id',
+  'client_secret': 'your_client_secret',
+  'redirect_uri': 'https://yourapp.com/callback',
+  'scope': 'read:courses write:students'
+}
+````
+    </CodeGroup>
+  </Tab>
+</Tabs>
+
+<Callout kind="info">
+  All authentication methods use HTTPS encryption to protect credentials in transit.
+</Callout>
+
+## API Key Management
+
+Properly manage your API keys to maintain security and control access. Regularly rotate keys and monitor usage patterns.
+
+<Columns cols={2}>
+  <Card title="Key Rotation" icon="refresh-cw" href="#key-rotation">
+    Regularly update keys to prevent unauthorized access.
+  </Card>
+  <Card title="Usage Monitoring" icon="bar-chart" href="#usage-monitoring">
+    Track API usage and detect unusual patterns.
+  </Card>
+</Columns>
+
+### Key Rotation
+
+Implement a key rotation strategy to minimize the impact of compromised credentials. Plan rotations during low-traffic periods.
+
+<Steps>
+  <Step title="Generate New Key" icon="plus">
+    Create a new API key with the same permissions as the old one.
+  </Step>
+  <Step title="Update Applications" icon="edit">
+    Replace the old key in all your applications and services.
+  </Step>
+  <Step title="Test Integration" icon="check-circle">
+    Verify that all systems work with the new key.
+  </Step>
+  <Step title="Delete Old Key" icon="trash-2">
+    Remove the old key once you're confident everything is working.
+  </Step>
+</Steps>
+
+### Usage Monitoring
+
+Monitor API key usage to detect anomalies and ensure compliance with usage limits. Set up alerts for suspicious activity.
+
+<Expandable title="Monitoring Features" default-open="false">
+  - Real-time usage dashboards
+  - Configurable rate limits
+  - Automated alerts for high usage
+  - Detailed logs with timestamps and IP addresses
+  - Export capabilities for auditing
+</Expandable>
+
+<ExpandableGroup>
+  <Expandable title="Rate Limiting">
+    API calls are limited to prevent abuse. Standard limits are 1000 requests per hour per key, with higher limits available for enterprise accounts.
+  </Expandable>
+  <Expandable title="IP Whitelisting">
+    Restrict API access to specific IP addresses or ranges for additional security.
+  </Expandable>
+</ExpandableGroup>
+
+## OAuth 2.0 Flow
+
+Implement the OAuth 2.0 authorization code flow for secure delegated access. This method is recommended for web applications.
+
+<Steps>
+  <Step title="Register Application" icon="settings">
+    Register your application in Planaday to obtain client credentials.
+  </Step>
+  <Step title="Request Authorization" icon="send">
+    Redirect users to Planaday's authorization endpoint with required parameters.
+  </Step>
+  <Step title="Handle Callback" icon="arrow-right">
+    Process the authorization code returned to your callback URL.
+  </Step>
+  <Step title="Exchange for Token" icon="key">
+    Exchange the authorization code for an access token.
+  </Step>
+</Steps>
+
+<Callout kind="tip">
+  Use the PKCE extension for additional security when implementing OAuth 2.0 in mobile or single-page applications.
+</Callout>
+
+## Security Best Practices
+
+Follow these security practices to protect your Planaday integration and user data.
+
+<Expandable title="Credential Storage" default-open="true">
+  - Store API keys and secrets in secure environment variables
+  - Use secret management services like AWS Secrets Manager or HashiCorp Vault
+  - Never commit credentials to version control systems
+  - Rotate keys regularly, at least every 90 days
+</Expandable>
+
+<ExpandableGroup>
+  <Expandable title="Error Handling">
+    Implement proper error handling to avoid exposing sensitive information. Return generic error messages to users.
+  </Expandable>
+  <Expandable title="Access Logging">
+    Log authentication attempts and API usage for security auditing and compliance purposes.
+  </Expandable>
+</ExpandableGroup>
+
+<Callout kind="danger">
+  Never share API keys or OAuth credentials in public forums, documentation, or unsecured communication channels.
+</Callout>
